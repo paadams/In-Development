@@ -18,7 +18,7 @@ $filter.Operation = [VMware.Vim.ConfigSpecOperation]::add
 $ruleSet = New-Object VMware.Vim.DvsTrafficRuleset 
 $ruleSet.Enabled = $true  
 
-# TCP, 192.168.7.0/24,any,port 512, port 1024, drop
+# Create rule to configure traffic marking for Ingress
 $rule =New-Object VMware.Vim.DvsTrafficRule 
 $rule.Description = 'Traffic Marking (added by script 1)' 
 $rule.Direction = 'outgoingPackets' # Setting for Ingress
