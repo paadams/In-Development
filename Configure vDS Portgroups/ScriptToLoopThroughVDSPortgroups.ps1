@@ -33,13 +33,10 @@ ForEach ( $vdsPGName in $vdsPGNames )
         $action.QosTag = 1
         $action.DscpTag = 8
 
-        # .Protocol.Value = 6   1 ICMP, 6 : TCP, 17 : UDP
+        # Create qualifier and set Protocol to Any
         $qualifier.Protocol = $any     # Configures Protocol to Any
         $qualifier.DestinationAddress = $null   # $null : any
         $qualifier.SourceIpPort = New-Object VMware.Vim.DvsSingleIpPort
-
-        # Renable to Set Port Number - Requires TCP or UDP setting for Protocol.Value
-        #$qualifier.SourceIpPort.PortNumber = 512
 
         $rule.Action += $action 
         $rule.Qualifier += $qualifier 
