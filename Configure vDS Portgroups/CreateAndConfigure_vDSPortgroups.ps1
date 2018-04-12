@@ -23,7 +23,7 @@ ForEach ($VLAN in $MyVLANFile) {
 
         $ruleSet = New-Object VMware.Vim.DvsTrafficRuleset 
         $ruleSet.Enabled = $true  
-
+        
         # Create rule to configure traffic marking for Ingress
         $rule =New-Object VMware.Vim.DvsTrafficRule 
         $rule.Description = 'Traffic Marking (added by script 1)' 
@@ -37,7 +37,7 @@ ForEach ($VLAN in $MyVLANFile) {
         $action.QosTag = 1
         $action.DscpTag = 8
 
-        # .Protocol.Value = 6   1 ICMP, 6 : TCP, 17 : UDP
+        # Set Protocol to Any
         $qualifier.Protocol = $any     # Configures Protocol to Any
         $qualifier.DestinationAddress = $null   # $null : any
         $qualifier.SourceIpPort = New-Object VMware.Vim.DvsSingleIpPort
